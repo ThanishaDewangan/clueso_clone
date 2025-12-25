@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clueso Clone</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      width: 320px;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: #ffffff;
+    }
+    
+    .header {
+      margin-bottom: 20px;
+    }
+    
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+    
+    .subtitle {
+      font-size: 13px;
+      color: #a3a3a3;
+    }
+    
+    .status {
+      padding: 12px;
+      background: #1a1a1a;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      border: 1px solid #262626;
+    }
+    
+    .status-text {
+      font-size: 13px;
+      color: #a3a3a3;
+      margin-bottom: 4px;
+    }
+    
+    .status-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+    
+    .status-value.recording {
+      color: #ef4444;
+    }
+    
+    .button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 8px;
+    }
+    
+    .button-primary {
+      background: #3b82f6;
+      color: #ffffff;
+    }
+    
+    .button-primary:hover {
+      background: #2563eb;
+    }
+    
+    .button-danger {
+      background: #ef4444;
+      color: #ffffff;
+    }
+    
+    .button-danger:hover {
+      background: #dc2626;
+    }
+    
+    .button-secondary {
+      background: #1a1a1a;
+      color: #ffffff;
+      border: 1px solid #262626;
+    }
+    
+    .button-secondary:hover {
+      background: #262626;
+    }
+    
+    .button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .recording-time {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 700;
+      margin: 16px 0;
+      font-variant-numeric: tabular-nums;
+    }
+    
+    .settings {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #262626;
+    }
+    
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    
+    .setting-label {
+      font-size: 13px;
+      color: #a3a3a3;
+    }
+    
+    select {
+      padding: 4px 8px;
+      background: #1a1a1a;
+      border: 1px solid #262626;
+      border-radius: 4px;
+      color: #ffffff;
+      font-size: 12px;
+    }
+    
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">Clueso Clone</div>
+    <div class="subtitle">Screen Recording</div>
+  </div>
+
+  <div id="auth-section">
+    <div class="status">
+      <div class="status-text">Status</div>
+      <div class="status-value" id="auth-status">Not logged in</div>
+    </div>
+    <button class="button button-primary" id="login-btn">Login to Dashboard</button>
+  </div>
+
+  <div id="recording-section" class="hidden">
+    <div class="status">
+      <div class="status-text">Recording Status</div>
+      <div class="status-value" id="status">Ready to record</div>
+    </div>
+
+    <div id="idle-controls">
+      <button class="button button-primary" id="start-btn">Start Recording</button>
+      
+      <div class="settings">
+        <div class="setting-item">
+          <span class="setting-label">Quality</span>
+          <select id="quality-select">
+            <option value="1080">1080p</option>
+            <option value="720" selected>720p</option>
+            <option value="480">480p</option>
+          </select>
+        </div>
+        <div class="setting-item">
+          <span class="setting-label">FPS</span>
+          <select id="fps-select">
+            <option value="60">60 fps</option>
+            <option value="30" selected>30 fps</option>
+            <option value="24">24 fps</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div id="recording-controls" class="hidden">
+      <div class="recording-time" id="timer">00:00</div>
+      <button class="button button-danger" id="stop-btn">Stop Recording</button>
+      <button class="button button-secondary" id="pause-btn">Pause</button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
